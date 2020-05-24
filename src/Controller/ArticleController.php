@@ -18,6 +18,8 @@ class ArticleController extends AbstractController
     {
         // return new Response("Helooooo");
         // using twig
-        return $this->render('articles/index.html.twig');
+        return $this->render('articles/index.html.twig', [
+            'name' => 'Zoleikha'
+        ]);
     }
 }
