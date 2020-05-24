@@ -1,0 +1,13 @@
+{
+    "auto-close-tag.SublimeText3Mode": true,
+    "auto-close-tag.fullMode": true,
+    "autoimport.doubleQuotes": true,
+    "blade.format.enable": true,
+    "css.fileExtensions": [
+        "css",
+        "scss"
+    ],
+    "files.associations": {
+        "*.twig": "html",
+    }
+}
