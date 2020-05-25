@@ -1,1 +1,15 @@
-{% extends 'base.html.twig' %} {% block title %}SymphArt Articles{% endblock %} {% block body%} My name is {{ name }} {% endblock %}
+{% extends 'base.html.twig' %} {% block title %}SymphArt Articles{% endblock %} {% block body%} {% if articles %}
+<table class="table table-stiped">
+    <tbody>
+        {% for article in articles %}
+        <tr>
+            <td>{{ article.title}}</td>
+            <td>
+                <a href="/article/{{ article.id}}">Show</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No article to display</p> {% endif %}{% endblock %}

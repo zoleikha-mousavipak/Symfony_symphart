@@ -19,27 +19,47 @@ class ArticleController extends AbstractController
     {
         // return new Response("Helooooo");
         // using twig
+
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+
         return $this->render('articles/index.html.twig', [
-            'name' => 'Zoleikha'
+            'articles' => $articles,
         ]);
     }
 
-    /**
-     * @Route("/article/save")
+      /**
+     * @Route("/article/{id}", name="article_show")
+     * @Method({"GET"})
      */
-
-    public function save()
+    public function show($id)
     {
-        $entityManager = $this->getDoctrine()->getManager();
+        // return new Response("Helooooo");
+        // using twig
 
-        $article = new Article();
-        $article->setTitle('Article One');
-        $article->setBody('Body for article One');
+        $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
 
-        $entityManager->persist($article);
-
-        $entityManager->flush();
-
-        return new Response('Saves an article with this id: ' . $article->getId());
+        return $this->render('articles/show.html.twig', [
+            'article' => $article,
+        ]);
     }
+
+
+    // /**
+    //  * @Route("/article/save")
+    //  */
+
+    // public function save()
+    // {
+    //     $entityManager = $this->getDoctrine()->getManager();
+
+    //     $article = new Article();
+    //     $article->setTitle('Article Two');
+    //     $article->setBody('Body for article Two');
+
+    //     $entityManager->persist($article);
+
+    //     $entityManager->flush();
+
+    //     return new Response('Saves an article with this id: ' . $article->getId());
+    // }
 }
